@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
               backgroundColor: Color(0xFF2F2750),
               elevation: 0,
               title: SizedBox(
-                width: MediaQuery.of(context).size.width/3,
+                width: MediaQuery.of(context).size.width,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
