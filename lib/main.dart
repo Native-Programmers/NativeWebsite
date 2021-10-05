@@ -236,8 +236,8 @@ class _HomeState extends State<Home> {
                     floating: false,
                     pinned: true,
                     flexibleSpace: FlexibleSpaceBar(
-                        centerTitle: true,
-                        title: const Text("Collapsing Toolbar",
+                        centerTitle: false,
+                        title: const Text("NATIVE PROGRAMMERS",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16.0,
@@ -254,7 +254,6 @@ class _HomeState extends State<Home> {
                           autoplay: true,
                         )),
                   ),
-
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
                           (context, index) => ListTile(title: Text('Item #$index')),
