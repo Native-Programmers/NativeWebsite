@@ -244,24 +244,17 @@ class _HomeState extends State<Home> {
                             )),
                         background: Swiper(
                           itemCount: _images.length,
-                          itemBuilder: (BuildContext context, int index) => Image.asset(
-                            _images[index],
-                            fit: BoxFit.cover,
+                          itemBuilder: (BuildContext context, int index) => (
+                              Image.asset(
+                                _images[index],
+                                fit: BoxFit.cover,
+                              )
+
                           ),
                           autoplay: true,
                         )),
                   ),
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                            (context, index) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: 75,
-                            color: Colors.black12,
-                          ),
-                        ),
-                        childCount: 10),
-                  ),
+
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
                           (context, index) => ListTile(title: Text('Item #$index')),
