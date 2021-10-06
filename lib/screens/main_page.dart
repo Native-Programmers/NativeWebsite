@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -8,40 +7,29 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hovering/hovering.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
+
 class _HomeState extends State<Home> {
-  openwhatsapp() async{
-    var whatsapp ="+923115671234";
-    var whatsappURl_android = "whatsapp://send?phone="+whatsapp+"&text=hello";
-    var whatappURL_ios ="https://wa.me/$whatsapp?text=${Uri.parse("hello")}";
-    if(Platform.isIOS){
-      // for iOS phone only
-      if( await canLaunch(whatappURL_ios)){
-        await launch(whatappURL_ios, forceSafariVC: false);
-      }else{
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("whatsapp no installed")));
+  openwhatsapp() async {
+    var whatsapp = "923115671234";
+    var whatsappURl ="https://wa.me/$whatsapp";
 
+      if (await canLaunch(whatsappURl)) {
+        await launch(whatsappURl, forceSafariVC: false);
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("whatsapp no installed")));
+        print("Not Working 1");
       }
-
-    }else{
-      if( await canLaunch(whatsappURl_android)){
-        await launch(whatsappURl_android);
-      }else{
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("whatsapp no installed")));
-
-      }
-
-
-    }
-
   }
+
   var search = TextEditingController();
   final _images = [
     'assets/back1.png',
@@ -57,7 +45,6 @@ class _HomeState extends State<Home> {
     return Stack(
       clipBehavior: Clip.antiAlias,
       children: [
-
         Scaffold(
           key: _key,
           appBar: AppBar(
@@ -67,7 +54,7 @@ class _HomeState extends State<Home> {
               Row(
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width/5,
+                    width: MediaQuery.of(context).size.width / 5,
                     height: 40,
                     child: TextFormField(
                       controller: search,
@@ -85,14 +72,13 @@ class _HomeState extends State<Home> {
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
                         ),
-                        label: const Text("Search Services",
+                        label: const Text(
+                          "Search Services",
                         ),
                         fillColor: Colors.white,
-                        filled:true,
+                        filled: true,
                       ),
-
                     ),
-
                   ),
                   const VerticalDivider(
                     width: (kIsWeb ? 25 : 5),
@@ -111,14 +97,16 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        FaIcon(FontAwesomeIcons.phone,
+                        FaIcon(
+                          FontAwesomeIcons.phone,
                           size: 14,
                           color: Colors.deepOrange,
                         ),
                         VerticalDivider(
-                          width:5,
+                          width: 5,
                         ),
-                        Text("Phone Number",
+                        Text(
+                          "Phone Number",
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -126,25 +114,24 @@ class _HomeState extends State<Home> {
                         ),
                         VerticalDivider(
                           width: (kIsWeb ? 15 : 2),
-
                         )
                       ],
                     ),
-                    onHover: (event) {
-
-                    },
+                    onHover: (event) {},
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        FaIcon(FontAwesomeIcons.phone,
+                        FaIcon(
+                          FontAwesomeIcons.phone,
                           size: 14,
                           color: Colors.orange,
                         ),
                         VerticalDivider(
-                          width:5,
+                          width: 5,
                         ),
-                        Text("Phone Number",
+                        Text(
+                          "Phone Number",
                           style: TextStyle(
                             fontSize: 14,
                           ),
@@ -160,14 +147,16 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        FaIcon(FontAwesomeIcons.whatsapp,
+                        FaIcon(
+                          FontAwesomeIcons.whatsapp,
                           size: 14,
                           color: Colors.deepOrange,
                         ),
                         VerticalDivider(
-                          width:5,
+                          width: 5,
                         ),
-                        Text("Whatsapp Number",
+                        Text(
+                          "Whatsapp Number",
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -178,27 +167,27 @@ class _HomeState extends State<Home> {
                         )
                       ],
                     ),
-                    onHover: (event) {
-
-                    },
+                    onHover: (event) {},
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        FaIcon(FontAwesomeIcons.whatsapp,
+                        FaIcon(
+                          FontAwesomeIcons.whatsapp,
                           size: 14,
                           color: Colors.orange,
                         ),
                         VerticalDivider(
-                          width:5,
+                          width: 5,
                         ),
-                        Text("Whatsapp Number",
+                        Text(
+                          "Whatsapp Number",
                           style: TextStyle(
                             fontSize: 14,
                           ),
                         ),
                         VerticalDivider(
-                          width:15,
+                          width: 15,
                         )
                       ],
                     ),
@@ -208,45 +197,47 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        FaIcon(FontAwesomeIcons.mailBulk,
+                        FaIcon(
+                          FontAwesomeIcons.mailBulk,
                           size: 14,
                           color: Colors.deepOrange,
                         ),
                         VerticalDivider(
-                          width:5,
+                          width: 5,
                         ),
-                        Text("Email Address",
+                        Text(
+                          "Email Address",
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
                           ),
                         ),
                         VerticalDivider(
-                          width:15,
+                          width: 15,
                         )
                       ],
                     ),
-                    onHover: (event) {
-
-                    },
+                    onHover: (event) {},
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        FaIcon(FontAwesomeIcons.mailBulk,
+                        FaIcon(
+                          FontAwesomeIcons.mailBulk,
                           size: 14,
                           color: Colors.orange,
                         ),
                         VerticalDivider(
-                          width:5,
+                          width: 5,
                         ),
-                        Text("Email Address",
+                        Text(
+                          "Email Address",
                           style: TextStyle(
                             fontSize: 14,
                           ),
                         ),
                         VerticalDivider(
-                          width:15,
+                          width: 15,
                         )
                       ],
                     ),
@@ -257,47 +248,43 @@ class _HomeState extends State<Home> {
           ),
           body: Scaffold(
             backgroundColor: Colors.transparent,
-            body: CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    expandedHeight: MediaQuery.of(context).size.height-50,
-                    floating: false,
-                    pinned: true,
-                    centerTitle: true,
-                    backgroundColor: Colors.lightBlueAccent,
-                    title: const Text("NATIVE PROGRAMMERS",
-                        style: TextStyle(
-                          fontSize:28,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Serif",
-                          letterSpacing: 2.0,
-                        )
-                    ),
-                    flexibleSpace: FlexibleSpaceBar(
-                        background: Swiper(
-                          itemCount: _images.length,
-                          itemBuilder: (BuildContext context, int index) => SizedBox(
-                            width: double.infinity,
-                            height: double.infinity,
-                            child: (
-                                Image.asset(
-                                  _images[index],
-                                  fit: BoxFit.fill,
-                                )
-                            ),
-                          ),
-                          autoplay: true,
+            body: CustomScrollView(slivers: [
+              SliverAppBar(
+                expandedHeight: MediaQuery.of(context).size.height - 50,
+                floating: false,
+                pinned: true,
+                centerTitle: true,
+                backgroundColor: Colors.lightBlueAccent,
+                title: const Text("NATIVE PROGRAMMERS",
+                    style: TextStyle(
+                      fontSize: 28,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Serif",
+                      letterSpacing: 2.0,
+                    )),
+                flexibleSpace: FlexibleSpaceBar(
+                    background: Swiper(
+                      duration: 700,
+                      itemCount: _images.length,
+                      itemBuilder: (BuildContext context, int index) => SizedBox(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: (Image.asset(
+                          _images[index],
+                          fit: BoxFit.fill,
                         )),
-                  ),
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                          (context, index) => ListTile(title: Text('Item #$index')),
-                      childCount: 1000,
-                    ),
-                  ),
-                ]
-            ),
+                      ),
+                      autoplay: true,
+                    )),
+              ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) => ListTile(title: Text('Item #$index')),
+                  childCount: 1000,
+                ),
+              ),
+            ]),
             floatingActionButton: SpeedDial(
               backgroundColor: Colors.blue[900],
               activeBackgroundColor: Colors.blue[200],
@@ -318,13 +305,12 @@ class _HomeState extends State<Home> {
                   elevation: 5,
                 ),
                 SpeedDialChild(
-                  child: const FaIcon(FontAwesomeIcons.whatsapp),
-                  label: "Whatsapp Number",
-                  elevation: 5,
-                  onTap: (){
-                    openwhatsapp();
-                  }
-                ),
+                    child: const FaIcon(FontAwesomeIcons.whatsapp),
+                    label: "Whatsapp Number",
+                    elevation: 5,
+                    onTap: () {
+                      openwhatsapp();
+                    }),
               ],
             ),
           ),

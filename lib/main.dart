@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:nativeprogarmmers/screens/mainPage.dart';
+import 'package:nativeprogarmmers/screens/main_page.dart';
 
 
 void main() async{
