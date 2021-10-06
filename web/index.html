@@ -100,5 +100,26 @@
       loadMainDartJs();
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+          apiKey: "AIzaSyDKmiqstR7yLkvSSYPIihntGxGeNkRRC5U",
+          authDomain: "native-b1c56.firebaseapp.com",
+          projectId: "native-b1c56",
+          storageBucket: "native-b1c56.appspot.com",
+          messagingSenderId: "792705956994",
+          appId: "1:792705956994:web:5d8668b4d91d53836ac89b",
+          measurementId: "G-NRZNYWL5C6"
+        };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
 </body>
 </html>
