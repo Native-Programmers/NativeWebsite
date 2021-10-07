@@ -47,8 +47,15 @@ class _HomeState extends State<Home> {
     'assets/back5.jpg',
     'assets/back6.jpg',
   ];
-  static List<String> list = [
-
+  static List<services> list = [
+    services("Web Application Development","alpha"),
+    services("Android Application Development","alpha"),
+    services("iOS Application Development","alpha"),
+    services("Windows Application Development","alpha"),
+    services("Digital Marketing","alpha"),
+    services("Search Engine Optimization","alpha"),
+    services("Graphuc Designing","alpha"),
+    services("IT Business Consultancy","alpha"),
   ];
   final _key = GlobalKey<ScaffoldState>();
   @override
@@ -96,16 +103,17 @@ class _HomeState extends State<Home> {
                   Container(
                     height: MediaQuery.of(context).size.height,
                     width: double.infinity,
-                    child: GridView.extent(
-                      maxCrossAxisExtent: 500,
-                      children: <Widget>[
-                        FlutterLogo(),
-                        FlutterLogo(),
-                        FlutterLogo(),
-                        FlutterLogo(),
-                        FlutterLogo(),
-                        FlutterLogo(),
-                      ],
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                      itemBuilder: (BuildContext context, int index) => SizedBox(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: (Image.asset(
+                          _images[index],
+                          fit: BoxFit.fill,
+                        )),
+                      ),
+                      itemCount: 4,
                     )
                   )
                 ],
