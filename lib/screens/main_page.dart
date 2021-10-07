@@ -28,6 +28,15 @@ class _HomeState extends State<Home> {
             .showSnackBar(const SnackBar(content: Text("whatsapp no installed")));
       }
   }
+  _sendMail() async {
+    const uri =
+        "mailto:nativeprogrammers@gmail.com?subject=Greetings&body=Hello%20I'm%20interested%20in%20your%20product.";
+    if (await canLaunch(uri)) {
+      await launch(uri);
+    } else {
+      throw 'Could not launch $uri';
+    }
+  }
 
   var search = TextEditingController();
   final _images = [
@@ -210,62 +219,41 @@ class _HomeState extends State<Home> {
           ),
           body: Scaffold(
             backgroundColor: Colors.transparent,
-            body: CustomScrollView(slivers: [
-              SliverAppBar(
-                expandedHeight:(MediaQuery.of(context).size.height<MediaQuery.of(context).size.width ?
-                MediaQuery.of(context).size.height-50 : MediaQuery.of(context).size.height/2.5  ),
-                floating: false,
-                pinned: true,
-                centerTitle: true,
-                backgroundColor: Colors.lightBlueAccent,
-                title: const Text("NATIVE PROGRAMMERS",
-                    style: TextStyle(
-                      fontSize: 28,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "Serif",
-                      letterSpacing: 2.0,
-                    )),
-                flexibleSpace: FlexibleSpaceBar(
-                    background: Swiper(
-                      duration: 700,
-                      itemCount: _images.length,
-                      itemBuilder: (BuildContext context, int index) => SizedBox(
-                        width: double.infinity,
-                        height: double.infinity,
-                        child: (Image.asset(
-                          _images[index],
-                          fit: BoxFit.fill,
-                        )),
-                      ),
-                      autoplay: true,
-                    )),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height:(MediaQuery.of(context).size.height<MediaQuery.of(context).size.width ?
+                    MediaQuery.of(context).size.height-50 : MediaQuery.of(context).size.height/2.5),
+                    width: double.infinity,
+                    child: Swiper(
+                          duration: 700,
+                          itemCount: _images.length,
+                          itemBuilder: (BuildContext context, int index) => SizedBox(
+                            width: double.infinity,
+                            height: double.infinity,
+                            child: (Image.asset(
+                              _images[index],
+                              fit: BoxFit.fill,
+                            )),
+                          ),
+                          autoplay: true,
+                          pagination: new SwiperPagination(),
+                          layout: SwiperLayout.STACK,
+                          control: new SwiperControl(),
+                          itemWidth: MediaQuery.of(context).size.width,
+
+                    ),
+                  ),
+                ],
               ),
-              SliverGrid(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200.0,
-                  mainAxisSpacing: 10.0,
-                  crossAxisSpacing: 10.0,
-                  childAspectRatio: 4.0,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      color: Colors.teal[100 * (index % 9)],
-                      child: Text('grid item $index'),
-                    );
-                  },
-                  childCount: 20,
-                ),
-              )
-            ]),
+            ),
             floatingActionButton: SpeedDial(
               backgroundColor: Colors.blue[900],
               activeBackgroundColor: Colors.blue[200],
               overlayColor: Colors.grey,
               overlayOpacity: 0.1,
-              animatedIcon: AnimatedIcons.menu_arrow,
+              animatedIcon: AnimatedIcons.menu_close,
               spaceBetweenChildren: 5,
               spacing: 10,
               children: [
@@ -274,10 +262,7 @@ class _HomeState extends State<Home> {
                   label: "Email Address",
                   elevation: 5,
                   onTap: () {
-                    Clipboard.setData(ClipboardData(text: "NativeProgrammers@gmail.com"));
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(const SnackBar(content: Text("Email copied to clipboard")));
-
+                    _sendMail();
                   },
                 ),
                 SpeedDialChild(
