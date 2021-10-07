@@ -12,7 +12,7 @@ void main() async{
     theme: ThemeData(
       brightness: Brightness.light,
       primaryColor: Colors.lightBlue[800],
-    ),
+      ),
     initialRoute: '/index',
     routes: {
       '/index' : (context) => const Home(),

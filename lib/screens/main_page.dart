@@ -1,6 +1,6 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,14 +19,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   openwhatsapp() async {
     var whatsapp = "923115671234";
-    var whatsappURl ="https://wa.me/$whatsapp";
+    var whatsappURl ="https://wa.me/$whatsapp?text=${Uri.parse("How are you ?")}";
 
       if (await canLaunch(whatsappURl)) {
         await launch(whatsappURl, forceSafariVC: false);
       } else {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("whatsapp no installed")));
-        print("Not Working 1");
+            .showSnackBar(const SnackBar(content: Text("whatsapp no installed")));
       }
   }
 
@@ -50,43 +49,6 @@ class _HomeState extends State<Home> {
           appBar: AppBar(
             backgroundColor: const Color(0xFF2F2750),
             elevation: 0,
-            actions: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 5,
-                    height: 40,
-                    child: TextFormField(
-                      controller: search,
-                      decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          onPressed: search.clear,
-                          icon: const Icon(Icons.clear),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        focusColor: Colors.white,
-                        labelStyle: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        label: const Text(
-                          "Search Services",
-                        ),
-                        fillColor: Colors.white,
-                        filled: true,
-                      ),
-                    ),
-                  ),
-                  const VerticalDivider(
-                    width: (kIsWeb ? 25 : 5),
-                    color: Colors.transparent,
-                  ),
-                ],
-              )
-            ],
             title: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: Row(
@@ -106,7 +68,7 @@ class _HomeState extends State<Home> {
                           width: 5,
                         ),
                         Text(
-                          "Phone Number",
+                          "+92 (311) 4561234",
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -131,7 +93,7 @@ class _HomeState extends State<Home> {
                           width: 5,
                         ),
                         Text(
-                          "Phone Number",
+                          "See Contact Number",
                           style: TextStyle(
                             fontSize: 14,
                           ),
@@ -206,7 +168,7 @@ class _HomeState extends State<Home> {
                           width: 5,
                         ),
                         Text(
-                          "Email Address",
+                          "NativeProgrammers@gmail.com",
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -231,7 +193,7 @@ class _HomeState extends State<Home> {
                           width: 5,
                         ),
                         Text(
-                          "Email Address",
+                          "See Email Address",
                           style: TextStyle(
                             fontSize: 14,
                           ),
@@ -250,7 +212,8 @@ class _HomeState extends State<Home> {
             backgroundColor: Colors.transparent,
             body: CustomScrollView(slivers: [
               SliverAppBar(
-                expandedHeight: MediaQuery.of(context).size.height - 50,
+                expandedHeight:(MediaQuery.of(context).size.height<MediaQuery.of(context).size.width ?
+                MediaQuery.of(context).size.height-50 : MediaQuery.of(context).size.height/2.5  ),
                 floating: false,
                 pinned: true,
                 centerTitle: true,
@@ -278,12 +241,24 @@ class _HomeState extends State<Home> {
                       autoplay: true,
                     )),
               ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => ListTile(title: Text('Item #$index')),
-                  childCount: 1000,
+              SliverGrid(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200.0,
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  childAspectRatio: 4.0,
                 ),
-              ),
+                delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return Container(
+                      alignment: Alignment.center,
+                      color: Colors.teal[100 * (index % 9)],
+                      child: Text('grid item $index'),
+                    );
+                  },
+                  childCount: 20,
+                ),
+              )
             ]),
             floatingActionButton: SpeedDial(
               backgroundColor: Colors.blue[900],
@@ -298,11 +273,22 @@ class _HomeState extends State<Home> {
                   child: const Icon(Icons.mail),
                   label: "Email Address",
                   elevation: 5,
+                  onTap: () {
+                    Clipboard.setData(ClipboardData(text: "NativeProgrammers@gmail.com"));
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(const SnackBar(content: Text("Email copied to clipboard")));
+
+                  },
                 ),
                 SpeedDialChild(
                   child: const FaIcon(FontAwesomeIcons.phone),
                   label: "Telephone Number",
                   elevation: 5,
+                  onTap: () {
+                    Clipboard.setData(ClipboardData(text: "+923115671234"));
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(const SnackBar(content: Text("Phone number copied to clipboard")));
+                  },
                 ),
                 SpeedDialChild(
                     child: const FaIcon(FontAwesomeIcons.whatsapp),
