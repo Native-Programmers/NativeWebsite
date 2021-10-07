@@ -40,11 +40,11 @@ class _HomeState extends State<Home> {
 
   var search = TextEditingController();
   final _images = [
-    'assets/back1.png',
-    'assets/back2.png',
-    'assets/back3.png',
-    'assets/back4.png',
-    'assets/back5.png',
+    'assets/back1.jpg',
+    'assets/back2.jpg',
+    'assets/back3.jpg',
+    'assets/back4.jpg',
+    'assets/back5.jpg',
     'assets/back6.jpg',
   ];
   final _key = GlobalKey<ScaffoldState>();
