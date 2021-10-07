@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
     'assets/back3.png',
     'assets/back4.png',
     'assets/back5.png',
-    'assets/SEO.jpg',
+    'assets/back6.jpg',
   ];
   final _key = GlobalKey<ScaffoldState>();
   @override
