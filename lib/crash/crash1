@@ -1,0 +1,211 @@
+
+CustomScrollView(slivers: [
+              SliverAppBar(
+                expandedHeight:(MediaQuery.of(context).size.height<MediaQuery.of(context).size.width ?
+                MediaQuery.of(context).size.height-50 : MediaQuery.of(context).size.height/2.5  ),
+                floating: false,
+                pinned: true,
+                centerTitle: true,
+                backgroundColor: Colors.lightBlueAccent,
+                title: const Text("NATIVE PROGRAMMERS",
+                    style: TextStyle(
+                      fontSize: 28,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Serif",
+                      letterSpacing: 2.0,
+                    )),
+                flexibleSpace: FlexibleSpaceBar(
+                    background: Swiper(
+                      duration: 700,
+                      itemCount: _images.length,
+                      itemBuilder: (BuildContext context, int index) => SizedBox(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: (Image.asset(
+                          _images[index],
+                          fit: BoxFit.fill,
+                        )),
+                      ),
+                      autoplay: true,
+                    )),
+              ),
+              SliverGrid(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200.0,
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  childAspectRatio: 4.0,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return Container(
+                      alignment: Alignment.center,
+                      color: Colors.teal[100 * (index % 9)],
+                      child: Text('grid item $index'),
+                    );
+                  },
+                  childCount: 20,
+                ),
+              )
+            ]),
+
+
+            SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              HoverWidget(
+                                hoverChild: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    FaIcon(
+                                      FontAwesomeIcons.phone,
+                                      size: 14,
+                                      color: Colors.deepOrange,
+                                    ),
+                                    VerticalDivider(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "+92 (311) 4561234",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      width: (kIsWeb ? 15 : 2),
+                                    )
+                                  ],
+                                ),
+                                onHover: (event) {},
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    FaIcon(
+                                      FontAwesomeIcons.phone,
+                                      size: 14,
+                                      color: Colors.orange,
+                                    ),
+                                    VerticalDivider(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "See Contact Number",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      width: (kIsWeb ? 15 : 2),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              HoverWidget(
+                                hoverChild: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    FaIcon(
+                                      FontAwesomeIcons.whatsapp,
+                                      size: 14,
+                                      color: Colors.deepOrange,
+                                    ),
+                                    VerticalDivider(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "Whatsapp Number",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      width: (kIsWeb ? 15 : 2),
+                                    )
+                                  ],
+                                ),
+                                onHover: (event) {},
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    FaIcon(
+                                      FontAwesomeIcons.whatsapp,
+                                      size: 14,
+                                      color: Colors.orange,
+                                    ),
+                                    VerticalDivider(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "Whatsapp Number",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      width: 15,
+                                    )
+                                  ],
+                                ),
+                              ),
+                              HoverWidget(
+                                hoverChild: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    FaIcon(
+                                      FontAwesomeIcons.mailBulk,
+                                      size: 14,
+                                      color: Colors.deepOrange,
+                                    ),
+                                    VerticalDivider(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "NativeProgrammers@gmail.com",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      width: 15,
+                                    )
+                                  ],
+                                ),
+                                onHover: (event) {},
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    FaIcon(
+                                      FontAwesomeIcons.mailBulk,
+                                      size: 14,
+                                      color: Colors.orange,
+                                    ),
+                                    VerticalDivider(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "See Email Address",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      width: 15,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),

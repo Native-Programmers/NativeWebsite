@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hovering/hovering.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nativeprogarmmers/classes/details.dart';
 
 
 class Home extends StatefulWidget {
@@ -47,6 +47,9 @@ class _HomeState extends State<Home> {
     'assets/back5.jpg',
     'assets/back6.jpg',
   ];
+  static List<String> list = [
+
+  ];
   final _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -58,164 +61,9 @@ class _HomeState extends State<Home> {
           appBar: AppBar(
             backgroundColor: const Color(0xFF2F2750),
             elevation: 0,
-            title: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  HoverWidget(
-                    hoverChild: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        FaIcon(
-                          FontAwesomeIcons.phone,
-                          size: 14,
-                          color: Colors.deepOrange,
-                        ),
-                        VerticalDivider(
-                          width: 5,
-                        ),
-                        Text(
-                          "+92 (311) 4561234",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: (kIsWeb ? 15 : 2),
-                        )
-                      ],
-                    ),
-                    onHover: (event) {},
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        FaIcon(
-                          FontAwesomeIcons.phone,
-                          size: 14,
-                          color: Colors.orange,
-                        ),
-                        VerticalDivider(
-                          width: 5,
-                        ),
-                        Text(
-                          "See Contact Number",
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: (kIsWeb ? 15 : 2),
-                        )
-                      ],
-                    ),
-                  ),
-                  HoverWidget(
-                    hoverChild: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        FaIcon(
-                          FontAwesomeIcons.whatsapp,
-                          size: 14,
-                          color: Colors.deepOrange,
-                        ),
-                        VerticalDivider(
-                          width: 5,
-                        ),
-                        Text(
-                          "Whatsapp Number",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: (kIsWeb ? 15 : 2),
-                        )
-                      ],
-                    ),
-                    onHover: (event) {},
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        FaIcon(
-                          FontAwesomeIcons.whatsapp,
-                          size: 14,
-                          color: Colors.orange,
-                        ),
-                        VerticalDivider(
-                          width: 5,
-                        ),
-                        Text(
-                          "Whatsapp Number",
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: 15,
-                        )
-                      ],
-                    ),
-                  ),
-                  HoverWidget(
-                    hoverChild: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        FaIcon(
-                          FontAwesomeIcons.mailBulk,
-                          size: 14,
-                          color: Colors.deepOrange,
-                        ),
-                        VerticalDivider(
-                          width: 5,
-                        ),
-                        Text(
-                          "NativeProgrammers@gmail.com",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: 15,
-                        )
-                      ],
-                    ),
-                    onHover: (event) {},
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        FaIcon(
-                          FontAwesomeIcons.mailBulk,
-                          size: 14,
-                          color: Colors.orange,
-                        ),
-                        VerticalDivider(
-                          width: 5,
-                        ),
-                        Text(
-                          "See Email Address",
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: 15,
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            title: Container(
+              child: Text("Hello"),
+            )
           ),
           body: Scaffold(
             backgroundColor: Colors.transparent,
@@ -245,6 +93,21 @@ class _HomeState extends State<Home> {
 
                     ),
                   ),
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
+                    child: GridView.extent(
+                      maxCrossAxisExtent: 500,
+                      children: <Widget>[
+                        FlutterLogo(),
+                        FlutterLogo(),
+                        FlutterLogo(),
+                        FlutterLogo(),
+                        FlutterLogo(),
+                        FlutterLogo(),
+                      ],
+                    )
+                  )
                 ],
               ),
             ),
