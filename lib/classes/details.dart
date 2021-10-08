@@ -1,7 +1,8 @@
 class services {
-  var name, details;
+  var name, details,image;
   services(
       this.name,
-      this.details
+      this.details,
+      this.image,
       );
 }

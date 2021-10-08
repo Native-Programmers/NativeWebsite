@@ -209,3 +209,316 @@ CustomScrollView(slivers: [
                             ],
                           ),
                         ),
+
+                        Container(
+                                            height: MediaQuery.of(context).size.height,
+                                            width: double.infinity,
+                                            child: GridView.builder(
+                                              physics: NeverScrollableScrollPhysics(),
+                                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                                              itemBuilder: (BuildContext context, int index) => Container(
+                                                height: double.infinity/3,
+                                                width: double.infinity/1.1,
+                                                child: Card(
+                                                  color: Colors.grey,
+                                                  child: Center(child: Text(list[index].name)),
+                                                ),
+                                              ),
+                                              itemCount: list.length,
+                                            )
+                                          )
+
+            Container(
+                                margin: EdgeInsets.fromLTRB(25,20,25,10),
+                                height: MediaQuery.of(context).size.height,
+                                width: double.infinity,
+                                child: GridView.count(
+                                  crossAxisCount: (kIsWeb && MediaQuery.of(context).size.width>MediaQuery.of(context).size.height?
+                                  4 : 2
+                                  ),
+                                  childAspectRatio: 500/100,
+                                  controller: ScrollController(keepScrollOffset: false),
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  children: list.map((value) {
+                                    return  Card(
+                                      elevation:5,
+                                      child: Container(
+                                        height: 500,
+                                        margin: const EdgeInsets.symmetric(horizontal: 25,vertical: 25),
+                                        child: Center(
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                value.name,
+                                                style: TextStyle(
+                                                  fontSize: 20.0,
+                                                  fontFamily:"Ubuntu"
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }).toList(),
+                                )
+                              )
+
+            Container(
+                                  margin: EdgeInsets.fromLTRB(25, 0, 25, 10),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/cards/web1.jpg"),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.circular(5.0),
+                                            ),
+                                            height:
+                                                MediaQuery.of(context).size.height / 3.5,
+                                            width:
+                                                MediaQuery.of(context).size.width / 3.25,
+                                            padding: EdgeInsets.only(top: 20),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  list[0].name,
+                                                  style: TextStyle(
+                                                    letterSpacing: 2.0,
+                                                    fontFamily: "Ubuntu",
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/cards/android.jpg"),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.circular(5.0),
+                                            ),
+                                            height:
+                                                MediaQuery.of(context).size.height / 3.5,
+                                            width:
+                                                MediaQuery.of(context).size.width / 3.25,
+                                            padding: EdgeInsets.only(top: 20),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  list[1].name,
+                                                  style: TextStyle(
+                                                    letterSpacing: 2.0,
+                                                    fontFamily: "Ubuntu",
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/cards/ios1.jpg"),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.circular(5.0),
+                                            ),
+                                            height:
+                                                MediaQuery.of(context).size.height / 3.5,
+                                            width:
+                                                MediaQuery.of(context).size.width / 3.25,
+                                            padding: EdgeInsets.only(top: 20),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  list[2].name,
+                                                  style: TextStyle(
+                                                    letterSpacing: 2.0,
+                                                    fontFamily: "Ubuntu",
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Divider(
+                                        height: 25,
+                                        color: Colors.transparent,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/cards/web.jpg"),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.circular(5.0),
+                                            ),
+                                            height:
+                                                MediaQuery.of(context).size.height / 3.5,
+                                            width:
+                                                MediaQuery.of(context).size.width / 3.25,
+                                            padding: EdgeInsets.only(top: 20),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  list[3].name,
+                                                  style: TextStyle(
+                                                    letterSpacing: 2.0,
+                                                    fontFamily: "Ubuntu",
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/cards/web1.jpg"),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.circular(5.0),
+                                            ),
+                                            height:
+                                                MediaQuery.of(context).size.height / 3.5,
+                                            width:
+                                                MediaQuery.of(context).size.width / 3.25,
+                                            padding: EdgeInsets.only(top: 20),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  list[4].name,
+                                                  style: TextStyle(
+                                                    letterSpacing: 2.0,
+                                                    fontFamily: "Ubuntu",
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: const DecorationImage(
+                                                image: AssetImage("assets/cards/seo.jpg"),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.circular(5.0),
+                                            ),
+                                            height:
+                                                MediaQuery.of(context).size.height / 3.5,
+                                            width:
+                                                MediaQuery.of(context).size.width / 3.25,
+                                            padding: EdgeInsets.only(top: 20),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  list[5].name,
+                                                  style: TextStyle(
+                                                    letterSpacing: 2.0,
+                                                    fontFamily: "Ubuntu",
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Divider(
+                                        height: 25,
+                                        color: Colors.transparent,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/cards/graphics.jpg"),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.circular(5.0),
+                                            ),
+                                            height:
+                                                MediaQuery.of(context).size.height / 3.5,
+                                            width:
+                                                MediaQuery.of(context).size.width / 3.25,
+                                            padding: EdgeInsets.only(top: 20),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  list[6].name,
+                                                  style: TextStyle(
+                                                    letterSpacing: 2.0,
+                                                    fontFamily: "Ubuntu",
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/cards/business.jpg"),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius: BorderRadius.circular(5.0),
+                                            ),
+                                            height:
+                                                MediaQuery.of(context).size.height / 3.5,
+                                            width:
+                                                MediaQuery.of(context).size.width / 3.25,
+                                            padding: EdgeInsets.only(top: 20),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  list[7].name,
+                                                  style: TextStyle(
+                                                    letterSpacing: 2.0,
+                                                    fontFamily: "Ubuntu",
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Divider(
+                                            height: 25,
+                                            color: Colors.transparent,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ))
