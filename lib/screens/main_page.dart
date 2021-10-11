@@ -5,8 +5,8 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nativeprogarmmers/classes/details.dart';
+import 'package:nativeprogarmmers/classes/team.dart';
 
 
 class Home extends StatefulWidget {
@@ -17,6 +17,44 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final _serviceKey = GlobalKey();
+  final _topKey = GlobalKey();
+  final _aboutKey = GlobalKey();
+
+  Future scrolltoItem () async{
+    final context = _serviceKey.currentContext!;
+    await Scrollable.ensureVisible(
+        context,
+        alignment:0.5,
+        duration: Duration(seconds:2),
+    );
+  }
+  Future scrolltoTop () async{
+    final context = _topKey.currentContext!;
+    await Scrollable.ensureVisible(
+      context,
+      alignment:0.5,
+      duration: Duration(seconds:2),
+    );
+  }
+  Future scrolltoAbout () async{
+    final context = _aboutKey.currentContext!;
+    await Scrollable.ensureVisible(
+      context,
+      alignment:0.5,
+      duration: Duration(seconds:2),
+    );
+  }
+  Future scrolltoContact () async{
+    final context = _topKey.currentContext!;
+    await Scrollable.ensureVisible(
+      context,
+      alignment:0.5,
+      duration: Duration(seconds:2),
+    );
+  }
+
+
   openwhatsapp() async {
     var whatsapp = "923115671234";
     var whatsappURl =
@@ -51,31 +89,49 @@ class _HomeState extends State<Home> {
   ];
   static List<services> list = [
     services("Web Application Development", "alpha",'assets/cards/web.jpg'),
-    services("Android Application Development", "alpha",'assets/cards/android.jpg'),
+    services("Android Application Development", "alpha",'assets/cards/android.png'),
     services("iOS Application Development", "alpha",'assets/cards/ios1.jpg'),
     services("Windows Application Development", "alpha",'assets/cards/web1.jpg'),
     services("Digital Marketing", "alpha",'assets/cards/web2.jpg'),
-    services("Search Engine Optimization", "alpha",'assets/cards/seo.png'),
+    services("Search Engine Optimization", "alpha",'assets/cards/seo.jpg'),
     services("Graphic Designing", "alpha",'assets/cards/graphics.jpg'),
     services("IT Business Consultancy", "alpha",'assets/cards/business.jpg'),
+  ];
+  static List<Team> team = [
+    Team("Mian Abdul Rehman", "Chief Executive Officer", "assets/team_images/ceo.jpg"),
+    Team("M.Nouman Faiz", "Human Resource Management", "assets/team_images/CEO.jpeg"),
+    Team("Usama Iqbal", "Graphic Designer", "assets/team_images/GD.jpeg"),
+    Team("Umar Nasir", "SEO Expert", "assets/team_images/SEO.jpeg"),
+    Team("Uzair Inshallah", "Lead Developer", "assets/team_images/CEO.jpeg"),
+    Team("Danyal Ahmed", "Digital Marketting Expert", "assets/team_images/CEO.jpeg"),
   ];
   final _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Stack(
-      clipBehavior: Clip.antiAlias,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       children: [
         Scaffold(
           key: _key,
           appBar: AppBar(
               backgroundColor: const Color(0xFF2F2750),
               elevation: 0,
+              actions: [
+                SizedBox(
+                  height:25,
+                  width: 70,
+                  child: Image.asset('assets/logo.png'),
+                ),
+                const VerticalDivider(
+                  width: 10,
+                ),
+              ],
               title: SizedBox(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {scrolltoTop();},
                       child: const Text(
                         "Home",
                         style: TextStyle(
@@ -84,12 +140,12 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width:20,
                       color:Colors.transparent,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {scrolltoItem();},
                       child: const Text("Services",
                         style: TextStyle(
                           fontSize: 14,
@@ -97,12 +153,12 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       width:20,
                       color:Colors.transparent,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: ()=>scrolltoAbout(),
                       child: const Text("About Us",
                         style: TextStyle(
                           fontSize: 14,
@@ -110,8 +166,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-
-                    VerticalDivider(
+                    const VerticalDivider(
                       width:20,
                       color:Colors.transparent,
                     ),
@@ -133,6 +188,7 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: [
                   SizedBox(
+                    key: _topKey,
                     height: (MediaQuery.of(context).size.height <
                             MediaQuery.of(context).size.width
                         ? MediaQuery.of(context).size.height - 50
@@ -185,60 +241,148 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     height: 25,
                     color: Colors.transparent,
                   ),
-                  Text(
-                    "Services",
-                    style: TextStyle(
-                      letterSpacing: 2.0,
-                      fontFamily: "Ubuntu",
-                      fontWeight: FontWeight.bold,
-                      fontSize: 26,
+                  const Center(
+                    child: Text(
+                      "Services",
+                      style: TextStyle(
+                        letterSpacing: 2.0,
+                        fontFamily: "Ubuntu",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26,
+                      ),
                     ),
                   ),
                   Divider(
                     height: 25,
                     color: Colors.transparent,
                   ),
-                  GridView.count(
-                    crossAxisCount: 3,
-                    childAspectRatio: (2 / 5),
-                    controller: new ScrollController(keepScrollOffset: false),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: list.map((value) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(value.image),
-                            fit: BoxFit.cover,
+                  Container(
+                    key: _serviceKey,
+                    child: GridView.count(
+                      crossAxisCount: 4,
+                      childAspectRatio: (4 / 3),
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      children: list.map((value) {
+                        return Container(
+                          margin: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(value.image),
+                              fit: BoxFit.cover,
+                              scale: 0.5,
+                            ),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        height:
-                        MediaQuery.of(context).size.height / 3.5,
-                        width:
-                        MediaQuery.of(context).size.width / 3.25,
-                        padding: EdgeInsets.only(top: 20),
-                        child: Column(
-                          children: [
-                            Text(
-                              value.name,
-                              style: TextStyle(
-                                letterSpacing: 2.0,
-                                fontFamily: "Ubuntu",
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color:Colors.white,
+                          height:
+                          MediaQuery.of(context).size.height / 3.5,
+                          width:
+                          MediaQuery.of(context).size.width / 3.25,
+                          padding: EdgeInsets.only(top: 20),
+                          child: Column(
+                            children: [
+                              Text(
+                                value.name,
+                                style: TextStyle(
+                                  letterSpacing: 2.0,
+                                  fontFamily: "Ubuntu",
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color:Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  Divider(
+                    height: 25,
+                    color:Colors.transparent,
+                  ),
+                  const Center(
+                    child: Text(
+                      "About Us",
+                      style: TextStyle(
+                        letterSpacing: 2.0,
+                        fontFamily: "Ubuntu",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    key: _aboutKey,
+                    height: 250,
+                    width: double.infinity,
+                    margin: const EdgeInsets.fromLTRB(12.5,25,12.5,25),
+                    child: Center(
+                      child: ListView.builder(
+                        itemCount: team.length,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Card(
+                            elevation: 15,
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(0,15,0,0),
+                              decoration: BoxDecoration(
+                                color:Colors.grey[100],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              width: MediaQuery.of(context).size.width/5,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    width: 150,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(team[index].picture
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    child: Text(""),
+                                  ),
+                                  const Divider(
+                                    height:25,
+                                    color:Colors.transparent
+                                  ),
+                                  Text(team[index].name,
+                                  style: const TextStyle(
+                                    fontSize:24,
+                                    fontWeight:FontWeight.bold,
+                                    fontFamily:'Ubuntu'
+                                  ),
+                                  ),
+                                  const Divider(
+                                      height:5,
+                                      color:Colors.transparent
+                                  ),
+                                  Text(team[index].designation,
+                                    style: const TextStyle(
+                                        fontSize:12,
+                                        fontWeight:FontWeight.bold,
+                                        fontFamily:'Ubuntu'
+                                    ),),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
-                      );
-                    }).toList(),
-                  ),
+                          );
+                        },
+
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
