@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:nativeprogarmmers/classes/details.dart';
 import 'package:nativeprogarmmers/classes/team.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 class Home extends StatefulWidget {
@@ -93,9 +94,9 @@ class _HomeState extends State<Home> {
     services("iOS Application Development", "alpha",'assets/cards/ios1.jpg'),
     services("Windows Application Development", "alpha",'assets/cards/web1.jpg'),
     services("Digital Marketing", "alpha",'assets/cards/web2.jpg'),
-    services("Search Engine Optimization", "alpha",'assets/cards/seo.jpg'),
+    services(" ", "alpha",'assets/cards/seo1.png'),
     services("Graphic Designing", "alpha",'assets/cards/graphics.jpg'),
-    services("IT Business Consultancy", "alpha",'assets/cards/business.jpg'),
+    services(" ", "alpha",'assets/cards/service.jpg'),
   ];
   static List<Team> team = [
     Team("Mian Abdul Rehman", "Chief Executive Officer", "assets/team_images/CEO.jpeg"),
@@ -103,7 +104,7 @@ class _HomeState extends State<Home> {
     Team("Usama Iqbal", "Graphic Designer", "assets/team_images/GD.jpeg"),
     Team("Umar Nasir", "SEO Expert", "assets/team_images/SEO.jpeg"),
     Team("Uzair Inshallah", "Lead Developer", "assets/team_images/LD.png"),
-    Team("Danyal Ahmed", "Digital Marketting Expert", "assets/team_images/DGE.jpeg"),
+    Team("Danyal Ahmed", "Digital Marketing Expert", "assets/team_images/DGE.jpeg"),
   ];
   final _key = GlobalKey<ScaffoldState>();
   @override
@@ -119,11 +120,11 @@ class _HomeState extends State<Home> {
               actions: [
                 SizedBox(
                   height:25,
-                  width: 70,
+                  width: 85,
                   child: Image.asset('assets/logo.png'),
                 ),
                 const VerticalDivider(
-                  width: 10,
+                  width: 25,
                 ),
               ],
               title: SizedBox(
@@ -132,53 +133,90 @@ class _HomeState extends State<Home> {
                   children: [
                     InkWell(
                       onTap: () {scrolltoTop();},
-                      child: const Text(
-                        "Home",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight:FontWeight.bold,
+                      child: SizedBox(
+                        width: 50,
+                        child: Row(
+                          children: [
+                            FittedBox(
+                              fit:BoxFit.fitWidth,
+                              child: Row(
+                                children: [
+                                  (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height?
+                                  Text("Home",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight:FontWeight.bold,
+                                    ),
+                                  ):Icon(FontAwesomeIcons.home)),
+
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    const VerticalDivider(
-                      width:20,
-                      color:Colors.transparent,
-                    ),
+
                     InkWell(
                       onTap: () {scrolltoItem();},
-                      child: const Text("Services",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight:FontWeight.bold,
+                      child: FittedBox(
+                        fit:BoxFit.fitWidth,
+                        child: Row(
+                          children: [
+                            (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height?
+                            const Text("Services",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight:FontWeight.bold,
+                              ),
+                            ):const Icon(FontAwesomeIcons.idBadge)),
+
+                          ],
                         ),
                       ),
-                    ),
-                    const VerticalDivider(
-                      width:20,
-                      color:Colors.transparent,
-                    ),
-                    InkWell(
-                      onTap: ()=>scrolltoAbout(),
-                      child: const Text("About Us",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight:FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const VerticalDivider(
-                      width:20,
-                      color:Colors.transparent,
                     ),
                     InkWell(
                       onTap: () {},
-                      child: const Text("Contact Us",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight:FontWeight.bold,
+                      child: FittedBox(
+                        fit:BoxFit.fitWidth,
+                        child: Row(
+                          children: [
+                            (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height?
+                            const Text("Contact Us",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight:FontWeight.bold,
+                              ),
+                            ):const Icon(FontAwesomeIcons.addressBook)),
+
+                          ],
                         ),
                       ),
                     ),
+
+                    InkWell(
+                      onTap: ()=>scrolltoAbout(),
+                      child: FittedBox(
+                        fit:BoxFit.fitWidth,
+                        child: Row(
+                          children: [
+                            (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height?
+                            const Text("About Us",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight:FontWeight.bold,
+                              ),
+                            ):
+                            const Icon(FontAwesomeIcons.infoCircle)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    VerticalDivider(
+                      width:(MediaQuery.of(context).size.width>MediaQuery.of(context).size.height?20:2),
+                      color:Colors.transparent,
+                    ),
+
                   ],
                 ),
               )),
@@ -216,16 +254,18 @@ class _HomeState extends State<Home> {
                   Container(
                     margin: EdgeInsets.only(top: 0),
                     color: const Color(0xFF2F2750),
-                    padding: EdgeInsets.symmetric(vertical: 100),
+                    padding: EdgeInsets.symmetric(vertical: (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height && kIsWeb?100:25)),
                     child: Column(
                       children: const [
-                        Text(
-                          "\"Great Tech, Great Business\"",
-                          style: TextStyle(
-                            fontFamily: "Ubuntu",
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        Center(
+                          child: Text(
+                            "\"Great Tech, Great Business\"",
+                            style: TextStyle(
+                              fontFamily: "Ubuntu",
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         Divider(
@@ -263,7 +303,8 @@ class _HomeState extends State<Home> {
                   Container(
                     key: _serviceKey,
                     child: GridView.count(
-                      crossAxisCount: 4,
+                      crossAxisCount: (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height && kIsWeb
+                          ?4 : 2),
                       childAspectRatio: (4 / 3),
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -283,18 +324,21 @@ class _HomeState extends State<Home> {
                           MediaQuery.of(context).size.height / 3.5,
                           width:
                           MediaQuery.of(context).size.width / 3.25,
-                          padding: EdgeInsets.only(top: 20),
+                          padding: EdgeInsets.fromLTRB(2.5,20,2.5,0),
                           child: Column(
                             children: [
                               Center(
-                                child: Text(
-                                  value.name,
-                                  style: const TextStyle(
-                                    letterSpacing: 2.0,
-                                    fontFamily: "Ubuntu",
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color:Colors.white,
+                                child: FittedBox(
+                                  fit:BoxFit.fitWidth,
+                                  child: Text(
+                                    value.name,
+                                    style: const TextStyle(
+                                      letterSpacing: 2.0,
+                                      fontFamily: "Ubuntu",
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color:Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -320,8 +364,10 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   Container(
+                    color:Colors.transparent,
                     key: _aboutKey,
-                    height: 250,
+                    height: (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height && kIsWeb?
+                    250:130),
                     width: double.infinity,
                     margin: const EdgeInsets.fromLTRB(12.5,25,12.5,25),
                     child: Center(
@@ -334,18 +380,26 @@ class _HomeState extends State<Home> {
                             elevation: 2.5,
                             shadowColor: const Color(0xFF6C6C6C),
                             child: Container(
-                              padding: const EdgeInsets.fromLTRB(5,15,5,0),
+                              padding: EdgeInsets.fromLTRB(
+                                  5,
+                                  (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height && kIsWeb?
+                                  15:5),
+                                  5,
+                                  0
+                              ),
                               decoration: BoxDecoration(
-                                color:Colors.cyan[index*100+100],
+                                color:Colors.cyanAccent[400],
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              width: MediaQuery.of(context).size.width/5,
+                              width:MediaQuery.of(context).size.width/6,
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
-                                    width: 150,
-                                    height: 150,
+                                    width: (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height && kIsWeb?
+                                    120:50),
+                                    height: (MediaQuery.of(context).size.width>MediaQuery.of(context).size.height && kIsWeb?
+                                    120:50),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
@@ -360,23 +414,30 @@ class _HomeState extends State<Home> {
                                     height:25,
                                     color:Colors.transparent
                                   ),
-                                  Text(team[index].name,
-                                  style: const TextStyle(
-                                    fontSize:24,
-                                    fontWeight:FontWeight.bold,
-                                    fontFamily:'Ubuntu'
-                                  ),
+                                  FittedBox(
+                                    fit: BoxFit.fitWidth,
+                                    child: Text(team[index].name,
+                                    style: const TextStyle(
+                                      fontSize:24,
+                                      fontWeight:FontWeight.bold,
+                                      fontFamily:'Ubuntu'
+                                      ),
+                                    ),
                                   ),
                                   const Divider(
                                       height:5,
                                       color:Colors.transparent
                                   ),
-                                  Text(team[index].designation,
-                                    style: const TextStyle(
-                                        fontSize:12,
-                                        fontWeight:FontWeight.bold,
-                                        fontFamily:'Ubuntu'
-                                    ),),
+                                  FittedBox(
+                                    fit: BoxFit.fitWidth,
+                                    child: Text(team[index].designation,
+                                      style: const TextStyle(
+                                          fontSize:12,
+                                          fontWeight:FontWeight.bold,
+                                          fontFamily:'Ubuntu'
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
