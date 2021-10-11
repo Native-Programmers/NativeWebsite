@@ -98,12 +98,12 @@ class _HomeState extends State<Home> {
     services("IT Business Consultancy", "alpha",'assets/cards/business.jpg'),
   ];
   static List<Team> team = [
-    Team("Mian Abdul Rehman", "Chief Executive Officer", "assets/team_images/ceo.jpg"),
-    Team("M.Nouman Faiz", "Human Resource Management", "assets/team_images/CEO.jpeg"),
+    Team("Mian Abdul Rehman", "Chief Executive Officer", "assets/team_images/CEO.jpeg"),
+    Team("M.Nouman Faiz", "Human Resource Management", "assets/team_images/HR.jpeg"),
     Team("Usama Iqbal", "Graphic Designer", "assets/team_images/GD.jpeg"),
     Team("Umar Nasir", "SEO Expert", "assets/team_images/SEO.jpeg"),
-    Team("Uzair Inshallah", "Lead Developer", "assets/team_images/CEO.jpeg"),
-    Team("Danyal Ahmed", "Digital Marketting Expert", "assets/team_images/CEO.jpeg"),
+    Team("Uzair Inshallah", "Lead Developer", "assets/team_images/LD.png"),
+    Team("Danyal Ahmed", "Digital Marketting Expert", "assets/team_images/DGE.jpeg"),
   ];
   final _key = GlobalKey<ScaffoldState>();
   @override
@@ -286,14 +286,16 @@ class _HomeState extends State<Home> {
                           padding: EdgeInsets.only(top: 20),
                           child: Column(
                             children: [
-                              Text(
-                                value.name,
-                                style: TextStyle(
-                                  letterSpacing: 2.0,
-                                  fontFamily: "Ubuntu",
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color:Colors.white,
+                              Center(
+                                child: Text(
+                                  value.name,
+                                  style: const TextStyle(
+                                    letterSpacing: 2.0,
+                                    fontFamily: "Ubuntu",
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color:Colors.white,
+                                  ),
                                 ),
                               ),
                             ],
@@ -329,11 +331,12 @@ class _HomeState extends State<Home> {
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
                           return Card(
-                            elevation: 15,
+                            elevation: 2.5,
+                            shadowColor: const Color(0xFF6C6C6C),
                             child: Container(
-                              padding: EdgeInsets.fromLTRB(0,15,0,0),
+                              padding: const EdgeInsets.fromLTRB(5,15,5,0),
                               decoration: BoxDecoration(
-                                color:Colors.grey[100],
+                                color:Colors.cyan[index*100+100],
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               width: MediaQuery.of(context).size.width/5,
@@ -351,7 +354,7 @@ class _HomeState extends State<Home> {
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    child: Text(""),
+                                    child: const Text(""),
                                   ),
                                   const Divider(
                                     height:25,
