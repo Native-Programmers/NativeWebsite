@@ -134,7 +134,6 @@ class _HomeState extends State<Home> {
                     InkWell(
                       onTap: () {scrolltoTop();},
                       child: SizedBox(
-                        width: 50,
                         child: Row(
                           children: [
                             FittedBox(
@@ -147,7 +146,8 @@ class _HomeState extends State<Home> {
                                       fontSize: 14,
                                       fontWeight:FontWeight.bold,
                                     ),
-                                  ):Icon(FontAwesomeIcons.home)),
+                                  ):Icon(FontAwesomeIcons.home,
+                                  )),
 
                                 ],
                               ),
@@ -156,7 +156,10 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-
+                    VerticalDivider(
+                      width:10,
+                      color:Colors.transparent,
+                    ),
                     InkWell(
                       onTap: () {scrolltoItem();},
                       child: FittedBox(
@@ -174,6 +177,10 @@ class _HomeState extends State<Home> {
                           ],
                         ),
                       ),
+                    ),
+                    VerticalDivider(
+                      width:10,
+                      color:Colors.transparent,
                     ),
                     InkWell(
                       onTap: () {},
@@ -193,7 +200,10 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-
+                    VerticalDivider(
+                      width:10,
+                      color:Colors.transparent,
+                    ),
                     InkWell(
                       onTap: ()=>scrolltoAbout(),
                       child: FittedBox(
@@ -212,11 +222,6 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    VerticalDivider(
-                      width:(MediaQuery.of(context).size.width>MediaQuery.of(context).size.height?20:2),
-                      color:Colors.transparent,
-                    ),
-
                   ],
                 ),
               )),
@@ -246,7 +251,7 @@ class _HomeState extends State<Home> {
                       ),
                       autoplay: true,
                       pagination: SwiperPagination(),
-                      layout: SwiperLayout.STACK,
+                      layout: SwiperLayout.DEFAULT,
                       control: SwiperControl(),
                       itemWidth: MediaQuery.of(context).size.width,
                     ),
