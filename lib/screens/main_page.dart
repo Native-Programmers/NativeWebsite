@@ -96,6 +96,7 @@ class _HomeState extends State<Home> {
     services("Digital Marketing", "alpha",'assets/cards/web2.jpg'),
     services(" ", "alpha",'assets/cards/seo1.png'),
     services("Graphic Designing", "alpha",'assets/cards/graphics.jpg'),
+
     services(" ", "alpha",'assets/cards/service.jpg'),
   ];
   static List<Team> team = [
